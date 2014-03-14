@@ -41,7 +41,7 @@ namespace WebsiteTestTask.App_Code
             return result;
         }
 
-        public DataSet ReadBD(string query)
+        public DataSet ReadFromBD(string query)
         {
             DataSet ds = new DataSet();
             try
