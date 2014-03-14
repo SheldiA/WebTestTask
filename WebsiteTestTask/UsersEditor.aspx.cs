@@ -12,7 +12,7 @@ namespace WebsiteTestTask
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            WebsiteTestTask.App_Code.SQLiteClass sql = (WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"];
+            /*WebsiteTestTask.App_Code.SQLiteClass sql = (WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"];
             if(sql != null)
             {
                 DataSet ds = sql.ReadFromBD("SELECT * FROM user");
@@ -21,7 +21,10 @@ namespace WebsiteTestTask
                     gv_usersList.DataSource = ds;
                     gv_usersList.DataBind();
                 }
-            }
+            }*/
+            gv_usersList.DataSource = (System.Data.DataSet)((WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT * FROM user");
+            gv_usersList.DataSourceID = "";
+            gv_usersList.DataBind();
         }
 
         protected void bt_signOut_Click(object sender, EventArgs e)

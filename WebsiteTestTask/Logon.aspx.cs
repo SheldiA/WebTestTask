@@ -25,7 +25,8 @@ namespace WebsiteTestTask
         {
             if (((UserData)Session["currUser"]).IsUserValid((SQLiteClass)Application["usersDB"], lg_loginData.UserName, lg_loginData.Password))
             {
-                FormsAuthentication.RedirectFromLoginPage(lg_loginData.UserName, false);
+                Session["usersListDS"] = 1;//(System.Data.DataSet)((SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT user_id,name FROM user");
+                FormsAuthentication.RedirectFromLoginPage(lg_loginData.UserName, false);// WHERE type='admin'
                 Response.Redirect("~\\UsersEditor.aspx");
             }
         }

@@ -28,13 +28,25 @@ namespace WebsiteTestTask.App_Code
             {                
                 string query = String.Format("SELECT * FROM user WHERE name = '{0}' AND password = '{1}'",userName,password);
                 DataSet ds = sql.ReadFromBD(query);
-                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && DateTime.Now.CompareTo((DateTime.Parse((string)ds.Tables[0].Rows[0]["start_date"]))) > 0)
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && IsDateCorrect((string)ds.Tables[0].Rows[0]["start_date"]))
                 {
                     userId = (long)ds.Tables[0].Rows[0]["user_id"];
                     isAdmin = ((string)ds.Tables[0].Rows[0]["type"] == "admin") ? true : false;
                     this.userName = userName;
                     result = true;
                 }
+            }
+
+            return result;
+        }
+
+        private bool IsDateCorrect(string date)
+        {
+            bool result = true;
+
+            if(date != "" && DateTime.Now.CompareTo(DateTime.Parse(date)) < 0)
+            {
+                result = false;
             }
 
             return result;

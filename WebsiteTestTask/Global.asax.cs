@@ -25,6 +25,7 @@ namespace WebsiteTestTask
         public void Session_OnStart()
         {
             Session["currUser"] = new WebsiteTestTask.App_Code.UserData();
+            Session["usersListDS"] = new System.Data.DataSet();
             //System.Web.Security.FormsAuthentication.SignOut();
         }
 
