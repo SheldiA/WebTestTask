@@ -1,0 +1,6 @@
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\bin\WebsiteTestTask.dll.config
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\bin\WebsiteTestTask.dll
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\bin\WebsiteTestTask.pdb
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\obj\Debug\WebsiteTestTask.csprojResolveAssemblyReference.cache
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\obj\Debug\WebsiteTestTask.dll
+D:\MyProjects\ProjectsC#\WebsiteTestTask\WebsiteTestTask\obj\Debug\WebsiteTestTask.pdb
