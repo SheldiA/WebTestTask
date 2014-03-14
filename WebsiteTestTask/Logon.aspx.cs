@@ -13,7 +13,7 @@ namespace WebsiteTestTask
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lg_loginData.RememberMeText = Session.SessionID;
+            
         }
 
         protected void lg_loginData_Authenticate(object sender, AuthenticateEventArgs e)

@@ -22,14 +22,22 @@ namespace WebsiteTestTask
                     gv_usersList.DataBind();
                 }
             }*/
-            gv_usersList.DataSource = (System.Data.DataSet)((WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT * FROM user");
-            gv_usersList.DataSourceID = "";
-            gv_usersList.DataBind();
+            if (!IsPostBack)
+            {
+                gv_usersList.DataSource = (System.Data.DataSet)((WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT * FROM user");
+                gv_usersList.DataSourceID = "";
+                gv_usersList.DataBind();
+            }
         }
 
         protected void bt_signOut_Click(object sender, EventArgs e)
         {
             System.Web.Security.FormsAuthentication.SignOut();
+        }
+
+        protected void bt_goToLogList_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~\\UsersActions.aspx");
         }
     }
 }

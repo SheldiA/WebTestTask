@@ -19,13 +19,13 @@ namespace WebsiteTestTask
             myScriptResDef.CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-1.10.2.js";
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
             Application["usersDB"] = new WebsiteTestTask.App_Code.SQLiteClass(Server.MapPath("App_Data") + "\\UserData.db");
-            Application["logsDB"] = new WebsiteTestTask.App_Code.SQLiteClass(Server.MapPath("App_Data") + "\\LogData.db");
+            Application["logsList"] = new WebsiteTestTask.App_Code.LogsList(Server.MapPath("App_Data") + "\\LogData.db");
         }
 
         public void Session_OnStart()
         {
             Session["currUser"] = new WebsiteTestTask.App_Code.UserData();
-            Session["usersListDS"] = new System.Data.DataSet();
+            Session["usersListDS"] = new System.Data.DataSet();//need??
             //System.Web.Security.FormsAuthentication.SignOut();
         }
 

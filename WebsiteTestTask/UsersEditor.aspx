@@ -8,9 +8,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-        UsersEditor</div>
         <asp:Button ID="bt_signOut" runat="server" OnClick="bt_signOut_Click" Text="SignOut" />
         <asp:GridView ID="gv_usersList" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="user_id" DataSourceID="UsersSqlDataSource">
             <Columns>
@@ -77,6 +74,7 @@
                 <asp:Parameter Name="user_id" Type="Int64" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <asp:Button ID="bt_goToLogList" runat="server" OnClick="bt_goToLogList_Click" Text="Show logs" />
     </form>
 </body>
 </html>
