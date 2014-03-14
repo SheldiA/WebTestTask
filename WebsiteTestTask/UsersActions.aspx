@@ -11,6 +11,8 @@
     <div>
     
         UsersActions</div>
+        <asp:GridView ID="gv_actionsList" runat="server">
+        </asp:GridView>
     </form>
 </body>
 </html>
