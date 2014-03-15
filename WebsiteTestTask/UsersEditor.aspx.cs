@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using WebsiteTestTask.App_Code;
 
 namespace WebsiteTestTask
 {
@@ -12,32 +13,51 @@ namespace WebsiteTestTask
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*WebsiteTestTask.App_Code.SQLiteClass sql = (WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"];
-            if(sql != null)
-            {
-                DataSet ds = sql.ReadFromBD("SELECT * FROM user");
-                if (ds.Tables.Count > 0)
-                {
-                    gv_usersList.DataSource = ds;
-                    gv_usersList.DataBind();
-                }
-            }*/
             if (!IsPostBack)
             {
-                gv_usersList.DataSource = (System.Data.DataSet)((WebsiteTestTask.App_Code.SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT * FROM user");
                 gv_usersList.DataSourceID = "";
-                gv_usersList.DataBind();
+                if (((UserData)Session["currUser"]).UserId < 0)
+                {
+                    System.Web.Security.FormsAuthentication.SignOut();
+                    System.Web.Security.FormsAuthentication.RedirectToLoginPage();
+                }
+                else
+                {
+                    DataSet ds = ((UserData)Session["currUser"]).GetUsersList((SQLiteClass)Application["usersDB"]);
+                    if (ds.Tables.Count > 0)
+                    {
+                        gv_usersList.DataSource = ds;
+                        gv_usersList.DataBind();
+                        //dv_userssList.AutoGenerateInsertButton = ((UserData)Session["currUser"]).IsAdmin;
+                    }
+                   
+                }
             }
         }
 
         protected void bt_signOut_Click(object sender, EventArgs e)
         {
             System.Web.Security.FormsAuthentication.SignOut();
+            System.Web.Security.FormsAuthentication.RedirectToLoginPage();
         }
 
         protected void bt_goToLogList_Click(object sender, EventArgs e)
         {
             Response.Redirect("~\\UsersActions.aspx");
         }
+
+        protected void dv_userssList_ModeChanged(object sender, EventArgs e)
+        {
+            bool v = ((UserData)Session["currUser"]).IsAdmin;
+            if (dv_userssList.CurrentMode == DetailsViewMode.Insert && !v)
+                dv_userssList.ChangeMode(DetailsViewMode.ReadOnly);
+        }
+
+        protected void dv_userssList_ItemInserting(object sender, DetailsViewInsertEventArgs e)
+        {
+            if(e.Values["start_date"] == null)
+                e.Values["start_date"] = DateTime.Now.ToString();
+        }
+
     }
 }

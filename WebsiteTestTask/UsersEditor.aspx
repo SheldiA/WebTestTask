@@ -20,9 +20,19 @@
                 <asp:SessionParameter Name="user_id2" SessionField="usersListDS" Type="Int64" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px">
+        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemInserting="dv_userssList_ItemInserting" OnModeChanged="dv_userssList_ModeChanged">
             <Fields>
-                <asp:BoundField DataField="user_id" HeaderText="user_id" ReadOnly="True" SortExpression="user_id" />
+                <asp:TemplateField HeaderText="user_id" SortExpression="user_id">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("user_id") %>'></asp:Label>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" ReadOnly="True" Text='<%# Bind("user_id") %>'></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("user_id") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
                 <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
                 <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />

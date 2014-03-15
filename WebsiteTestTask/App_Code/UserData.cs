@@ -9,15 +9,36 @@ namespace WebsiteTestTask.App_Code
     public class UserData
     {
         private string userName;
-        public string UserName { get; set; }
-        private long userId;
-        public long UserId { get; set; }
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+
+        private long userId = -1;
+        public long UserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
+
         private bool isAdmin = false;
-        public bool IsAdmin { get; set; }
+        public bool IsAdmin 
+        {
+            get { return isAdmin; }
+            set { isAdmin = value; }
+        }
 
         public UserData()
         {
-           
+        }
+
+        public DataSet GetUsersList(SQLiteClass sql)
+        {
+            string query = "SELECT * FROM user";
+            if (!isAdmin)
+                query += " WHERE user_id=" + userId;
+            return sql.ReadFromBD(query);
         }
 
         public bool IsUserValid(SQLiteClass sql,string userName,string password)

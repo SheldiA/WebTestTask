@@ -36,7 +36,7 @@ namespace WebsiteTestTask
 
         protected void Application_End()
         {
-
+            System.Web.Security.FormsAuthentication.SignOut();
         }
     }
 }
