@@ -40,6 +40,24 @@ namespace WebsiteTestTask {
         protected global::System.Web.UI.WebControls.Label lb_actionFilter;
         
         /// <summary>
+        /// lb_fromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_fromDate;
+        
+        /// <summary>
+        /// lb_toDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_toDate;
+        
+        /// <summary>
         /// tb_usernameFilter control.
         /// </summary>
         /// <remarks>

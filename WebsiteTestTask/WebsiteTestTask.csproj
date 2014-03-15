@@ -68,6 +68,11 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Logon.aspx" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="UsersActions.aspx" />
     <Content Include="UsersEditor.aspx" />
     <Content Include="Web.config" />
@@ -106,7 +111,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
