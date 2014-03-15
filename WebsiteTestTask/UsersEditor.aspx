@@ -20,7 +20,7 @@
                 <asp:SessionParameter Name="user_id2" SessionField="usersListDS" Type="Int64" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemInserting="dv_userssList_ItemInserting" OnModeChanged="dv_userssList_ModeChanged">
+        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged">
             <Fields>
                 <asp:TemplateField HeaderText="user_id" SortExpression="user_id">
                     <EditItemTemplate>
