@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using System.Globalization;
 
 namespace WebsiteTestTask.App_Code
 {
@@ -23,11 +24,12 @@ namespace WebsiteTestTask.App_Code
 
         public bool AddLog(string user,string action)
         {
-            string query = String.Format("INSERT INTO log(user_name,action,action_date) VALUES ('{0}','{1}','{2}')",user,action,DateTime.Now.ToString());
+            string date = DateTime.Now.Date.ToString("yyyy/MM/dd",new CultureInfo("en-GB"));
+            string query = String.Format("INSERT INTO log(user_name,action,action_date) VALUES ('{0}','{1}','{2}')",user,action,date);
             return logDB.ExecuteQuery(query);
         }
 
-        public DataSet ShowAllLogs()
+        public DataSet GetAllLogs()
         {
             return logDB.ReadFromBD("SELECT * FROM log");
         }
