@@ -8,7 +8,14 @@ namespace WebsiteTestTask.App_Code
 {
     public class LogsList
     {
+        /*"CREATE TABLE log(
+         * log_id INTEGER PRIMARY KEY,
+         * user_name TEXT NOT NULL, 
+         * action TEXT NOT NULL,
+         * action_date TEXT NOT NULL)"*/
+
         private SQLiteClass logDB;
+        
         public LogsList(string dbPath)
         {
             logDB = new SQLiteClass(dbPath);
@@ -23,6 +30,12 @@ namespace WebsiteTestTask.App_Code
         public DataSet ShowAllLogs()
         {
             return logDB.ReadFromBD("SELECT * FROM log");
+        }
+
+        public DataSet ApplyFilter(string userFilter,string actionFilter)
+        {
+            string query = String.Format("SELECT * FROM log WHERE user_name like '%{0}%' AND action like '%{1}%'",userFilter,actionFilter);
+            return logDB.ReadFromBD(query);
         }
     }
 }

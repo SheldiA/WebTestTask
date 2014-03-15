@@ -17,15 +17,6 @@ namespace WebsiteTestTask
             {
                 if (((UserData)Session["currUser"]).UserId < 0)
                     SignOut();
-                else
-                {
-                    DataSet ds = ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).ShowAllLogs();
-                    if (ds.Tables.Count > 0)
-                    {
-                        gv_actionsList.DataSource = ds;
-                        gv_actionsList.DataBind();
-                    }
-                }
             }
         }
 
@@ -33,6 +24,17 @@ namespace WebsiteTestTask
         {
             System.Web.Security.FormsAuthentication.SignOut();
             System.Web.Security.FormsAuthentication.RedirectToLoginPage();
+        }
+
+        protected void bt_filter_Click(object sender, EventArgs e)
+        {
+            DataSet ds = ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).ApplyFilter(tb_usernameFilter.Text,tb_actionFilter.Text);
+            if (ds.Tables.Count > 0)
+            {
+                gv_actionsList.DataSourceID = "";
+                gv_actionsList.DataSource = ds;
+                gv_actionsList.DataBind();
+            }
         }
     }
 }

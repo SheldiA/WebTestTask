@@ -8,6 +8,15 @@ namespace WebsiteTestTask.App_Code
 {
     public class UserData
     {
+        /*CREATE TABLE user(
+         * user_id INTEGER PRIMARY KEY,
+         * name TEXT UNIQUE NOT NULL,
+         * password TEXT NOT NULL, 
+         * email TEXT NOT NULL, 
+         * company TEXT, 
+         * type TEXT DEFAULT 'user',
+         * start_date TEXT DEFAULT '{0}')", (new DateTime(1900, 1, 1)).ToString());*/
+
         private string userName;
         public string UserName
         {
