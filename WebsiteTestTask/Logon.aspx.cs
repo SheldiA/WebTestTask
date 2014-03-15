@@ -23,9 +23,13 @@ namespace WebsiteTestTask
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+            if (((UserData)Session["currUser"]).UserId > 0)
+            {
+                ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).AddLog(((WebsiteTestTask.App_Code.UserData)Session["currUser"]).UserName, "log out");
+                FormsAuthentication.SignOut();
+            }
             if (((UserData)Session["currUser"]).IsUserValid((SQLiteClass)Application["usersDB"], lg_loginData.UserName, lg_loginData.Password))
             {
-                //Session["usersListDS"] = 1;//(System.Data.DataSet)((SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT user_id,name FROM user");
                 ((LogsList)Application["logsList"]).AddLog(((UserData)Session["currUser"]).UserName,"log on");
                 FormsAuthentication.RedirectFromLoginPage(lg_loginData.UserName, false);
                 Response.Redirect("~\\UsersEditor.aspx");

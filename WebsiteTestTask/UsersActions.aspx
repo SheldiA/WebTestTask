@@ -25,13 +25,13 @@
     
         <br />
         <br />
-        <asp:Label ID="lb_userNameFilter" runat="server" Text="user name:"></asp:Label>
+        <asp:Label ID="lb_userNameFilter" runat="server" Text="user name:" Font-Bold="True" Font-Italic="False"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lb_actionFilter" runat="server" Text="action:"></asp:Label>
+        <asp:Label ID="lb_actionFilter" runat="server" Text="action:" Font-Bold="True"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lb_fromDate" runat="server" Text="from date:"></asp:Label>
+        <asp:Label ID="lb_fromDate" runat="server" Text="from date:" Font-Bold="True"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lb_toDate" runat="server" Text="to date:"></asp:Label>
+        <asp:Label ID="lb_toDate" runat="server" Text="to date:" Font-Bold="True"></asp:Label>
         <br />
         <asp:TextBox ID="tb_usernameFilter" runat="server" Width="79px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -39,11 +39,21 @@
 &nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_fromDate" runat="server" Width="99px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_toDate" runat="server" Width="95px"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="bt_filter" runat="server" OnClick="bt_filter_Click" Text="Filter" />
+        <asp:Button ID="bt_filter" runat="server" OnClick="bt_filter_Click" Text="Filter" BackColor="#FFFF99" BorderColor="#990000" BorderStyle="Groove" Font-Bold="True" />
         <br />
     
         </div>
-        <asp:GridView ID="gv_actionsList" runat="server" AllowSorting="True" OnSorting="gv_actionsList_Sorting">
+        <asp:GridView ID="gv_actionsList" runat="server" AllowSorting="True" OnSorting="gv_actionsList_Sorting" CellPadding="4" ForeColor="#333333" GridLines="None" Width="240px">
+            <AlternatingRowStyle BackColor="White" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
     </form>
 </body>

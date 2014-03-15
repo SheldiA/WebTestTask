@@ -8,19 +8,31 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Button ID="bt_signOut" runat="server" OnClick="bt_signOut_Click" Text="SignOut" />
-        <asp:GridView ID="gv_usersList" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="user_id" DataSourceID="UsersSqlDataSource">
+        <asp:Button ID="bt_signOut" runat="server" OnClick="bt_signOut_Click" Text="SignOut" BackColor="#FFFF99" BorderColor="#990000" BorderStyle="Groove" Font-Bold="True" />
+        <br />
+        <br />
+        <asp:GridView ID="gv_usersList" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="user_id" DataSourceID="UsersSqlDataSource" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="user_id" HeaderText="user_id" ReadOnly="True" SortExpression="user_id" />
                 <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
             </Columns>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
         </asp:GridView>
-        <asp:SqlDataSource ID="UsersSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UsersDBConnectionString %>" ProviderName="<%$ ConnectionStrings:UsersDBConnectionString.ProviderName %>" SelectCommand="SELECT [user_id], [name] FROM [user] WHERE ([user_id] = ?)">
-            <SelectParameters>
-                <asp:SessionParameter Name="user_id2" SessionField="usersListDS" Type="Int64" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged">
+        <br />
+        <br />
+        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemUpdating="dv_userssList_ItemUpdating">
+            <AlternatingRowStyle BackColor="White" />
+            <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
+            <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
             <Fields>
                 <asp:TemplateField HeaderText="user_id" SortExpression="user_id">
                     <EditItemTemplate>
@@ -57,7 +69,16 @@
                 <asp:BoundField DataField="start_date" HeaderText="start_date" SortExpression="start_date" />
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
             </Fields>
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
         </asp:DetailsView>
+        <asp:SqlDataSource ID="UsersSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UsersDBConnectionString %>" ProviderName="<%$ ConnectionStrings:UsersDBConnectionString.ProviderName %>" SelectCommand="SELECT [user_id], [name] FROM [user] WHERE ([user_id] = ?)">
+            <SelectParameters>
+                <asp:SessionParameter Name="user_id2" SessionField="usersListDS" Type="Int64" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <asp:SqlDataSource ID="DVUsersListSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:UsersDBConnectionString %>" DeleteCommand="DELETE FROM [user] WHERE [user_id] = ?" InsertCommand="INSERT INTO [user] ([user_id], [name], [password], [email], [company], [type], [start_date]) VALUES (?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:UsersDBConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [user] WHERE ([user_id] = ?)" UpdateCommand="UPDATE [user] SET [name] = ?, [password] = ?, [email] = ?, [company] = ?, [type] = ?, [start_date] = ? WHERE [user_id] = ?">
             <DeleteParameters>
                 <asp:Parameter Name="user_id" Type="Int64" />
@@ -84,7 +105,7 @@
                 <asp:Parameter Name="user_id" Type="Int64" />
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:Button ID="bt_goToLogList" runat="server" OnClick="bt_goToLogList_Click" Text="Show logs" />
+        <asp:Button ID="bt_goToLogList" runat="server" OnClick="bt_goToLogList_Click" Text="Show logs" BackColor="#FFFF99" BorderColor="#990000" BorderStyle="Groove" Font-Bold="True" />
     </form>
 </body>
 </html>

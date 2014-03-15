@@ -19,7 +19,10 @@ namespace WebsiteTestTask
                 if (((UserData)Session["currUser"]).UserId < 0)
                     SignOut();
                 else
+                {
                     RefreshGridView();
+                    bt_goToLogList.Visible = ((UserData)Session["currUser"]).IsAdmin;
+                }
             }
         }
 
@@ -36,8 +39,7 @@ namespace WebsiteTestTask
 
         protected void dv_userssList_ModeChanged(object sender, EventArgs e)
         {
-            bool v = ((UserData)Session["currUser"]).IsAdmin;
-            if (dv_userssList.CurrentMode == DetailsViewMode.Insert && !v)
+            if (dv_userssList.CurrentMode == DetailsViewMode.Insert && !((UserData)Session["currUser"]).IsAdmin)
                 dv_userssList.ChangeMode(DetailsViewMode.ReadOnly);
         }
 
@@ -88,6 +90,16 @@ namespace WebsiteTestTask
         {            
             System.Web.Security.FormsAuthentication.SignOut();
             System.Web.Security.FormsAuthentication.RedirectToLoginPage();
+        }
+
+        protected void dv_userssList_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
+        {
+            if (gv_usersList.SelectedValue.ToString() == ((UserData)Session["currUser"]).UserId.ToString())
+                if (!((UserData)Session["currUser"]).IsAdmin && e.OldValues["type"] != e.NewValues["type"])
+                {
+                    e.Cancel = true;
+                    dv_userssList.ChangeMode(DetailsViewMode.ReadOnly);
+                }
         }
 
     }

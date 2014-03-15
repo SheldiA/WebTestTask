@@ -16,7 +16,7 @@ namespace WebsiteTestTask
             
             if (!IsPostBack) 
             {
-                if (((UserData)Session["currUser"]).UserId < 0)
+                if (((UserData)Session["currUser"]).UserId < 0 || !((UserData)Session["currUser"]).IsAdmin)
                     SignOut();
                 else
                 {
