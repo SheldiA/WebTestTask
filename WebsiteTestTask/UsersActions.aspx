@@ -36,8 +36,9 @@
         <asp:TextBox ID="tb_usernameFilter" runat="server" Width="79px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="tb_actionFilter" runat="server" Width="80px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;
-        <input id="FromPicker" type="text" />&nbsp;&nbsp;&nbsp;<input id="ToPicker" type="text" />&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_fromDate" runat="server" Width="99px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_toDate" runat="server" Width="95px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="bt_filter" runat="server" OnClick="bt_filter_Click" Text="Filter" />
         <br />
     

@@ -1,3 +1,3 @@
 ﻿$(function () {
-    $("#FromPicker,#ToPicker").datepicker({ dateFormat: "yy-mm-dd", autoSize: true });
+    $("#tb_fromDate,#tb_toDate").datepicker({ dateFormat: "yy-mm-dd", autoSize: true });
 });

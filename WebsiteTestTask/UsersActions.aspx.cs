@@ -34,7 +34,7 @@ namespace WebsiteTestTask
 
         protected void bt_filter_Click(object sender, EventArgs e)
         {
-            DataSet ds = ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).ApplyFilter(tb_usernameFilter.Text,tb_actionFilter.Text);
+            DataSet ds = ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).ApplyFilter(tb_usernameFilter.Text,tb_actionFilter.Text,tb_fromDate.Text,tb_toDate.Text);
             FillGridView(ds);
         }
 
