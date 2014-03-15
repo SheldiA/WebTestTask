@@ -11,7 +11,7 @@ namespace WebsiteTestTask.App_Code
         private SQLiteClass logDB;
         public LogsList(string dbPath)
         {
-            logDB = new SQLiteClass(dbPath); 
+            logDB = new SQLiteClass(dbPath);
         }
 
         public bool AddLog(string user,string action)

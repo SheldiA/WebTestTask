@@ -25,8 +25,9 @@ namespace WebsiteTestTask
         {
             if (((UserData)Session["currUser"]).IsUserValid((SQLiteClass)Application["usersDB"], lg_loginData.UserName, lg_loginData.Password))
             {
-                Session["usersListDS"] = 1;//(System.Data.DataSet)((SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT user_id,name FROM user");
-                FormsAuthentication.RedirectFromLoginPage(lg_loginData.UserName, false);// WHERE type='admin'
+                //Session["usersListDS"] = 1;//(System.Data.DataSet)((SQLiteClass)Application["usersDB"]).ReadFromBD("SELECT user_id,name FROM user");
+                ((LogsList)Application["logsList"]).AddLog(((UserData)Session["currUser"]).UserName,"log on");
+                FormsAuthentication.RedirectFromLoginPage(lg_loginData.UserName, false);
                 Response.Redirect("~\\UsersEditor.aspx");
             }
         }

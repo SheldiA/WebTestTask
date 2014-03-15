@@ -20,23 +20,24 @@ namespace WebsiteTestTask
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
             Application["usersDB"] = new WebsiteTestTask.App_Code.SQLiteClass(Server.MapPath("App_Data") + "\\UserData.db");
             Application["logsList"] = new WebsiteTestTask.App_Code.LogsList(Server.MapPath("App_Data") + "\\LogData.db");
+            
         }
 
         public void Session_OnStart()
         {
+            Session.Timeout = 2;
             Session["currUser"] = new WebsiteTestTask.App_Code.UserData();
-            Session["usersListDS"] = new System.Data.DataSet();//need??
-            //System.Web.Security.FormsAuthentication.SignOut();
         }
 
         public void Session_OnEnd()
         {
-            System.Web.Security.FormsAuthentication.SignOut();
+            ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).AddLog(((WebsiteTestTask.App_Code.UserData)Session["currUser"]).UserName, "log out");
+            //System.Web.Security.FormsAuthentication.SignOut();
         }
 
         protected void Application_End()
         {
-            System.Web.Security.FormsAuthentication.SignOut();
         }
+
     }
 }
