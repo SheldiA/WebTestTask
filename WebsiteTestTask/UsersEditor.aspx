@@ -33,6 +33,9 @@
         </asp:GridView>
         <br />
         <br />
+        <asp:Label ID="lb_error" runat="server" ForeColor="Red"></asp:Label>
+        <br />
+        <br />
         <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="104px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemUpdating="dv_userssList_ItemUpdating">
             <AlternatingRowStyle BackColor="White" />
             <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
