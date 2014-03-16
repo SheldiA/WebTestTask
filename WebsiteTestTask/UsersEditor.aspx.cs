@@ -16,6 +16,9 @@ namespace WebsiteTestTask
             if (!IsPostBack)
             {
                 gv_usersList.DataSourceID = "";
+                UsersSqlDataSource.ConnectionString = "";
+                DVUsersListSqlDataSource.ConnectionString = "";
+
                 if (((UserData)Session["currUser"]).UserId < 0)
                     SignOut();
                 else
@@ -108,6 +111,8 @@ namespace WebsiteTestTask
             else
             {
                 lb_error.Text = "";
+                if (gv_usersList.SelectedValue.ToString() == ((UserData)Session["currUser"]).UserId.ToString())
+                    ((UserData)Session["currUser"]).ChangeData((string)e.NewValues["name"], (string)e.NewValues["type"]);
                 string userId = gv_usersList.SelectedValue.ToString();
                 ((LogsList)Application["logsList"]).AddLog(((UserData)Session["currUser"]).UserName, "edit profile of user with id " + userId);
                 RefreshGridView();

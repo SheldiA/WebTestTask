@@ -21,21 +21,18 @@ namespace WebsiteTestTask.App_Code
         public string UserName
         {
             get { return userName; }
-            set { userName = value; }
         }
 
         private long userId = -1;
         public long UserId
         {
             get { return userId; }
-            set { userId = value; }
         }
 
         private bool isAdmin = false;
         public bool IsAdmin 
         {
             get { return isAdmin; }
-            set { isAdmin = value; }
         }
 
         public UserData()
@@ -68,6 +65,13 @@ namespace WebsiteTestTask.App_Code
             }
 
             return result;
+        }
+
+        public void ChangeData(string userName,string type)
+        {
+            if (this.userName != userName)
+                this.userName = userName;
+            isAdmin = (type == "admin") ? true : false;
         }
 
         private bool IsDateCorrect(string date)

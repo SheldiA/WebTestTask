@@ -18,6 +18,7 @@ namespace WebsiteTestTask
             myScriptResDef.CdnPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-1.10.2.min.js";
             myScriptResDef.CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-1.10.2.js";
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", null, myScriptResDef);
+
             Application["usersDB"] = new WebsiteTestTask.App_Code.SQLiteClass(Server.MapPath("App_Data") + "\\UserData.db");
             Application["logsList"] = new WebsiteTestTask.App_Code.LogsList(Server.MapPath("App_Data") + "\\LogData.db");
             
@@ -32,11 +33,11 @@ namespace WebsiteTestTask
         public void Session_OnEnd()
         {
             ((WebsiteTestTask.App_Code.LogsList)Application["logsList"]).AddLog(((WebsiteTestTask.App_Code.UserData)Session["currUser"]).UserName, "log out");
-            //System.Web.Security.FormsAuthentication.SignOut();
         }
 
-        protected void Application_End()
+        protected void Application_Error()
         {
+            Response.Redirect("error.html");
         }
 
     }

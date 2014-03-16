@@ -20,7 +20,7 @@ namespace WebsiteTestTask.App_Code
         public LogsList(string dbPath)
         {
             logDB = new SQLiteClass(dbPath);
-            //logDB.ExecuteQuery("DELETE FROM log WHERE log_id = 23");
+            //logDB.ExecuteQuery("DELETE FROM log WHERE log_id > 10");
         }
 
         public bool AddLog(string user,string action)
