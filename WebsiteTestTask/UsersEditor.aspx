@@ -5,9 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+    <link type="text/css" href="/Scripts/validation_style.css" rel="stylesheet" />
+    <script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery_form_validation.js" type="text/javascript"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="fm_usersEditor" runat="server">
         <asp:Button ID="bt_signOut" runat="server" OnClick="bt_signOut_Click" Text="SignOut" BackColor="#FFFF99" BorderColor="#990000" BorderStyle="Groove" Font-Bold="True" />
         <br />
         <br />
@@ -29,7 +33,7 @@
         </asp:GridView>
         <br />
         <br />
-        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="125px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemUpdating="dv_userssList_ItemUpdating">
+        <asp:DetailsView ID="dv_userssList" runat="server" AutoGenerateRows="False" DataKeyNames="user_id" DataSourceID="DVUsersListSqlDataSource" Height="50px" Width="104px" OnItemDeleted="dv_userssList_ItemDeleted" OnItemInserted="dv_userssList_ItemInserted" OnItemInserting="dv_userssList_ItemInserting" OnItemUpdated="dv_userssList_ItemUpdated" OnModeChanged="dv_userssList_ModeChanged" CellPadding="4" ForeColor="#333333" GridLines="None" OnItemUpdating="dv_userssList_ItemUpdating">
             <AlternatingRowStyle BackColor="White" />
             <CommandRowStyle BackColor="#FFFFC0" Font-Bold="True" />
             <FieldHeaderStyle BackColor="#FFFF99" Font-Bold="True" />
@@ -45,9 +49,39 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("user_id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
-                <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                <asp:TemplateField HeaderText="name" SortExpression="name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tb_name" runat="server" Text='<%# Bind("name") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="tb_name" runat="server" Text='<%# Bind("name") %>' Height="18px" Width="102px"></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="password" SortExpression="password">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tb_password" runat="server" Height="19px" Text='<%# Bind("password") %>' Width="102px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="tb_password" runat="server" Text='<%# Bind("password") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("password") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="email" SortExpression="email">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tb_email" runat="server" Text='<%# Bind("email") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="tb_email" runat="server" Text='<%# Bind("email") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("email") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="company" HeaderText="company" SortExpression="company" />
                 <asp:TemplateField HeaderText="type" SortExpression="type">
                     <EditItemTemplate>
@@ -66,8 +100,32 @@
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("type") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="start_date" HeaderText="start_date" SortExpression="start_date" />
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
+                <asp:TemplateField HeaderText="start_date" SortExpression="start_date">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="tb_start_date" runat="server" Text='<%# Bind("start_date") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="tb_start_date" runat="server" Text='<%# Bind("start_date") %>' Height="19px" Width="102px"></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("start_date") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField ShowHeader="False">
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="connect" CausesValidation="True" CommandName="Update" Text="Update"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="connect" CausesValidation="True" CommandName="Insert" Text="Insert"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Edit" Text="Edit"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="New" Text="New"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Fields>
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

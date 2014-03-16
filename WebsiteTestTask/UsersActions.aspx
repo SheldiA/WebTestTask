@@ -9,7 +9,9 @@
     <link type="text/css" href="/Scripts/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
     <script src="/Scripts/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
     <script src="/Scripts/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/Scripts/script.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery_date_validation.js" type="text/javascript"></script>
     <style type="text/css">
         #FromPicker {
             width: 87px;
@@ -25,25 +27,26 @@
     
         <br />
         <br />
-        <asp:Label ID="lb_userNameFilter" runat="server" Text="user name:" Font-Bold="True" Font-Italic="False"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lb_actionFilter" runat="server" Text="action:" Font-Bold="True"></asp:Label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lb_fromDate" runat="server" Text="from date:" Font-Bold="True"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lb_userNameFilter" runat="server" Text="user name:" Font-Bold="True" Font-Italic="False"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lb_actionFilter" runat="server" Text="action:" Font-Bold="True"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_fromDate" runat="server" Text="from date:" Font-Bold="True"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="lb_toDate" runat="server" Text="to date:" Font-Bold="True"></asp:Label>
         <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="tb_usernameFilter" runat="server" Width="79px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="tb_actionFilter" runat="server" Width="80px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_fromDate" runat="server" Width="99px"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_toDate" runat="server" Width="95px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_fromDate" runat="server" Width="77px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;<asp:TextBox ID="tb_toDate" runat="server" Width="77px" Height="16px"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="bt_filter" runat="server" OnClick="bt_filter_Click" Text="Filter" BackColor="#FFFF99" BorderColor="#990000" BorderStyle="Groove" Font-Bold="True" />
         <br />
     
         </div>
-        <asp:GridView ID="gv_actionsList" runat="server" AllowSorting="True" OnSorting="gv_actionsList_Sorting" CellPadding="4" ForeColor="#333333" GridLines="None" Width="240px">
+        <asp:GridView ID="gv_actionsList" runat="server" AllowSorting="True" OnSorting="gv_actionsList_Sorting" CellPadding="4" ForeColor="#333333" GridLines="None" Width="445px">
             <AlternatingRowStyle BackColor="White" />
             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

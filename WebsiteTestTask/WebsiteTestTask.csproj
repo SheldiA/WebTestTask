@@ -69,10 +69,15 @@
     <Content Include="Global.asax" />
     <Content Include="Logon.aspx" />
     <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.css" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery_date_validation.js" />
+    <Content Include="Scripts\jquery_form_validation.js" />
     <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\validation_style.css" />
     <Content Include="UsersActions.aspx" />
     <Content Include="UsersEditor.aspx" />
     <Content Include="Web.config" />

@@ -1,0 +1,9 @@
+.valid { 
+    border: 1px solid green; 
+    box-shadow: 0 2px 4px green inset;
+    border-radius: 3px;
+}
+
+.error{
+	color:red;
+}
